@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: aliceblue;
+    }
+    .main{
+        height: 400px;
+        background-color: rgb(87, 87, 113);
+        padding: 0px 20px;
+        overflow-y: auto;
+    }
+    .main h2{
+        text-align: center;
+        color: white;
+    }
+    #text{
+        width: 200px;
+        border: none;
+        outline: none;
+        padding: 10px;
+        border-radius:5px ;
+    }
+    button{
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-weight: 600;
+        width: 60px;
+        border-radius:5px ;
+    }
+    .main1 ul {
+        width: 265px;
+        background-color: rgb(246, 243, 243);
+        padding: 10px;
+        border-radius: 5px;
+        color: rgb(27, 28, 28);
+
+        
+    }
+    
+    .done{
+        background-color: green;
+        text-decoration: line-through;
+        color: aliceblue;
+    }
+    i{
+        margin-left: 210px;
+        cursor: pointer;
+        color: rgb(253, 7, 7);
+        
+    }
+     span i{
+        margin-left: 10px;
+        margin-right: 10px;
+        float: right;
+        /* margin-top: -20px; */
+        color: green;
+        
+    }
+</style>
+<body>
+    <div class="main">
+        <h2>To Do List</h2>
+        <input type="text" id="text">
+        <button id="add">Add</button>
+
+        <div class="main1" id="ad">
+
+        </div>
+    </div>
+
+    <script>
+        let text = document.getElementById("text")
+        let add = document.getElementById("add")
+
+        add.addEventListener("click", ()=>{
+            let ul = document.createElement("ul");
+            ul.innerHTML=`${text.value} <i class="fa-solid fa-trash"></i>  <span><i class="fa-solid fa-check"></i></span>`
+            document.getElementById("ad").appendChild(ul);
+            text.value="";
+            ul.querySelector("i").addEventListener("click",
+            ()=>{
+               ul.remove();
+            });
+            ul.querySelector("span").addEventListener("click",
+            ()=>{
+               ul.classList.toggle("done")
+            })
+        })
+    </script>
+</body>
+</html>
